@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpaceController : MonoBehaviour {
 
-    bool SHOW_LOG = true;
+    bool SHOW_LOG = false;
 
     float startRadius = 5.0f;
     float currentRadius;
@@ -18,8 +18,9 @@ public class SpaceController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentRadius <= 0.0f) {
-            Logger.LOG("Player: DEAD", SHOW_LOG);
-            Destroy(gameObject);
+            PlayerUtils.Kill();
+            // Logger.LOG("Player: DEAD", SHOW_LOG);
+            // Destroy(gameObject);
         }
 
         Logger.LOG("Space: " + currentRadius, SHOW_LOG);

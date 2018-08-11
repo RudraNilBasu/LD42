@@ -7,7 +7,7 @@ public class Development : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ScreenLogger.Instance.ShowLog = false;
+		ScreenLogger.Instance.ShowLog = Settings.ENVIRONMENT == "DEVELOPMENT" ? true : false;
 	}
 	
 	// Update is called once per frame
