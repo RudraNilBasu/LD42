@@ -10,10 +10,6 @@ public class Blocks : MonoBehaviour {
     private bool startBreaking, isBroken;
 
     bool SHOW_LOG = false;
-    void LOG(string msg) {
-        if (SHOW_LOG && Settings.ENVIRONMENT == "DEVELOPMENT")
-            Debug.Log(msg);
-    }
 
 	// Use this for initialization
 	void Start () {
@@ -27,9 +23,9 @@ public class Blocks : MonoBehaviour {
             return;
 		if (startBreaking) {
             float timeDiff = Time.time - breakStartTime;
-            LOG(gameObject.name + ": Time elapsed: " + timeDiff);
+            Logger.LOG(gameObject.name + ": Time elapsed: " + timeDiff, SHOW_LOG);
             if (timeDiff >= breakTime) {
-                LOG(gameObject.name + ": Broken.");
+                Logger.LOG(gameObject.name + ": Broken.", SHOW_LOG);
                 isBroken = true;
                 // TODO: Better stuff with this
                 Destroy(gameObject);
@@ -43,7 +39,7 @@ public class Blocks : MonoBehaviour {
             return;
         if (coll.gameObject.tag == "Player") {
             startBreaking = true;
-            LOG(gameObject.name + " has started breaking");
+            Logger.LOG(gameObject.name + " has started breaking", SHOW_LOG);
             breakStartTime = Time.time;
         }
     }

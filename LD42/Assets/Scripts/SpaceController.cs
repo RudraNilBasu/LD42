@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class SpaceController : MonoBehaviour {
 
-    bool SHOW_LOG = false;
-    void LOG(string msg) {
-        if (SHOW_LOG && Settings.ENVIRONMENT == "DEVELOPMENT")
-            Debug.Log(msg);
-    }
+    bool SHOW_LOG = true;
 
     float startRadius = 5.0f;
     float currentRadius;
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log(Settings.ENVIRONMENT);
 		currentRadius = startRadius;
         StartCoroutine(ReduceSpace());
 	}
@@ -23,16 +18,16 @@ public class SpaceController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentRadius <= 0.0f) {
-            LOG("Player: DEAD");
+            Logger.LOG("Player: DEAD", SHOW_LOG);
             Destroy(gameObject);
         }
 
-        LOG("Space: " + currentRadius);
+        Logger.LOG("Space: " + currentRadius, SHOW_LOG);
 	}
 
     void applyPickups(float amt)
     {
-        LOG("Increasing Radius by: " + amt);
+        Logger.LOG("Increasing Radius by: " + amt, SHOW_LOG);
         currentRadius += amt;
     }
 
