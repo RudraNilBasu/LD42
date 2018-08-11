@@ -19,14 +19,12 @@ public class SpaceController : MonoBehaviour {
 	void Update () {
 		if (currentRadius <= 0.0f) {
             PlayerUtils.Kill();
-            // Logger.LOG("Player: DEAD", SHOW_LOG);
-            // Destroy(gameObject);
         }
 
         Logger.LOG("Space: " + currentRadius, SHOW_LOG);
 	}
 
-    void applyPickups(float amt)
+    public void applyPickups(float amt)
     {
         Logger.LOG("Increasing Radius by: " + amt, SHOW_LOG);
         currentRadius += amt;
