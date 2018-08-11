@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
         float _yMov = rb.velocity.y; // equals to player's current Y velocity
 
         if (Input.GetButton("Jump") && isGrounded()) {
-            // TODO: Check if grounded
+            // TODO: Don't jump too high
             _yMov += jumpSpeed; // initially it was jumpSpeed * -10 * time.deltatime
         }
 
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 
     bool isGrounded()
     {
+        // @TODO: Use LayerMasks to ignore certain layers
         float playerSize = GetComponent<BoxCollider2D>().size.y;
         Vector2 rayEmitPoint = new Vector2(transform.position.x, transform.position.y)
                                           + (-Vector2.up * playerSize);
@@ -45,11 +46,9 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(rayEmitPoint, -Vector2.up, 100);
         if (hit.collider != null) {
             float distance = Mathf.Abs(hit.point.y - rayEmitPoint.y);
-            Debug.Log("Distance: " + distance);
             if (distance <= thresholdGroundedDistance)
                 return true;
         }
-        Debug.Log("We hit Nothing");
         return false;
     }
 }
