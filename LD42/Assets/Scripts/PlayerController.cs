@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour {
 
+    bool SHOW_LOG = false;
+
     PlayerMotor motor;
     Rigidbody2D rb;
     float moveSpeed = 20.0f;

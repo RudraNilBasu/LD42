@@ -6,8 +6,15 @@ public class SpaceController : MonoBehaviour {
 
     bool SHOW_LOG = false;
 
-    float startRadius = 5.0f;
+    float startRadius = 30.0f;
     float currentRadius;
+
+    // temp space representer
+    // @TODO: Please use a Shader to represent it better
+    // A Good way will be to blur / darken everything outside
+    // and make the radius bigger
+    [SerializeField]
+    GameObject spaceGO;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +28,8 @@ public class SpaceController : MonoBehaviour {
             PlayerUtils.Kill();
         }
 
+        // TODO: Better way of this
+        spaceGO.transform.localScale = new Vector3(currentRadius, currentRadius, 1.0f);
         Logger.LOG("Space: " + currentRadius, SHOW_LOG);
 	}
 

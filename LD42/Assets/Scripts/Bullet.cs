@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour {
     bool SHOW_LOG = false;
     Rigidbody2D rb;
 
-    private float speed = 30.0f;
+    private float speed = 25.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -24,9 +24,10 @@ public class Bullet : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "Player") {
+            PlayerUtils.Kill();
             return;
-        // TODO: Reverse the direction
+        }
         rb.velocity = Vector2.right * -1 * speed;
         // Destroy(gameObject);
     }
