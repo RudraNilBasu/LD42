@@ -20,20 +20,38 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     GameObject playerShootPoint, bullet;
 
+    [SerializeField]
+    CameraShake cameraShake;
+
+    bool jumped;
+    float jumpTime;
+
 	// Use this for initialization
 	void Start () {
 		motor = GetComponent<PlayerMotor>();
 		rb = GetComponent<Rigidbody2D>();
+
+        jumped = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (jumped && isGrounded() && ((Time.time - jumpTime) >= 0.5f) ) {
+            jumped = false;
+            if (cameraShake != null) {
+                cameraShake.Shake(0.05f, 0.1f);
+            }
+        }
+
         // Movement
         float _xMov = Input.GetAxis("Horizontal") * moveSpeed;
         // float _xMov = moveSpeed; // Automove
         float _yMov = rb.velocity.y; // equals to player's current Y velocity
 
         if (Input.GetButton("Jump") && isGrounded()) {
+            jumped = true;
+            jumpTime = Time.time;
             // TODO: Don't jump too high
             _yMov += jumpSpeed; // initially it was jumpSpeed * -10 * time.deltatime
         }
@@ -45,6 +63,9 @@ public class PlayerController : MonoBehaviour {
 
         // Shooting
         if (Input.GetKeyDown(KeyCode.X)) {
+            if (cameraShake != null) {
+                cameraShake.Shake(0.1f, 0.1f);
+            }
             Instantiate(bullet, playerShootPoint.transform.position, playerShootPoint.transform.rotation);
         }
 	}
