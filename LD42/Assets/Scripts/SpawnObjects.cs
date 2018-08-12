@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpawnObjects : MonoBehaviour {
 
+    bool SHOW_LOG = false;
+
     [SerializeField]
     GameObject[] spawnObjects;
     float spawnMin = 1f;
     float spawnMax = 2f;
-
-    bool SHOW_LOG = true;
 
     void Start()
     {

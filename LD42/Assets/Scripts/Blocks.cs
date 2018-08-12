@@ -6,7 +6,7 @@ public class Blocks : MonoBehaviour {
 
     public bool isBreakable = true;
 
-    private float breakStartTime, breakEndTime, breakTime = 5.0f;
+    private float breakStartTime, breakEndTime, breakTime = 1.5f;
     private bool startBreaking, isBroken;
 
     bool SHOW_LOG = false;

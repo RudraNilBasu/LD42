@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
     PlayerMotor motor;
     Rigidbody2D rb;
-    float moveSpeed = 20.0f;
+    float moveSpeed = 20.0f; // 20
     float jumpSpeed = 2.0f;
     float thresholdGroundedDistance = 0.2f;
 
@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // Movement
-		float _xMov = Input.GetAxis("Horizontal") * moveSpeed;
+        float _xMov = Input.GetAxis("Horizontal") * moveSpeed;
+        // float _xMov = moveSpeed; // Automove
         float _yMov = rb.velocity.y; // equals to player's current Y velocity
 
         if (Input.GetButton("Jump") && isGrounded()) {

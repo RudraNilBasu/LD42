@@ -8,8 +8,8 @@ public class PlayerMotor : MonoBehaviour {
     Vector2 velocity;
     Rigidbody2D rb;
 
-    float lowJumpMultiplier = 2f;
-    float fallMultiplier = 2.5f;
+    float lowJumpMultiplier = 3f;
+    float fallMultiplier = 3.5f;
 
 	// Use this for initialization
 	void Start () {
