@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
         if (jumped && isGrounded() && ((Time.time - jumpTime) >= 0.5f) ) {
             jumped = false;
             if (cameraShake != null) {
-                cameraShake.Shake(0.05f, 0.1f);
+                cameraShake.Shake(0.08f, 0.1f);
             }
         }
 

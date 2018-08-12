@@ -6,7 +6,7 @@ public class SpaceController : MonoBehaviour {
 
     bool SHOW_LOG = false;
 
-    float startRadius = 30.0f;
+    float startRadius = 50.0f;
     float currentRadius;
 
     // temp space representer
