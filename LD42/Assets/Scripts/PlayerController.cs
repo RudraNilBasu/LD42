@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 
         jumped = false;
+        PlayerUtils.isAlive = true;
 	}
 	
 	// Update is called once per frame
