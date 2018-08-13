@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Blocks : MonoBehaviour {
 
@@ -28,7 +29,8 @@ public class Blocks : MonoBehaviour {
                 Logger.LOG(gameObject.name + ": Broken.", SHOW_LOG);
                 isBroken = true;
                 // TODO: Better stuff with this
-                Destroy(gameObject);
+                transform.DOMoveY(-7, 2);
+                Destroy(gameObject, 5);
             }
         }
 	}

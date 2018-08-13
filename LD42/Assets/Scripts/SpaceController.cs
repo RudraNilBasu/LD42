@@ -42,7 +42,7 @@ public class SpaceController : MonoBehaviour {
     IEnumerator ReduceSpace()
     {
         while (currentRadius > 0.0f) {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.5f);
             currentRadius -= 0.5f;
         }
     }
