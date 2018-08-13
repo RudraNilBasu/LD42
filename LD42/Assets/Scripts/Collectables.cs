@@ -11,6 +11,9 @@ public class Collectables : MonoBehaviour {
     [SerializeField]
     Sprite[] anim;
 
+    [SerializeField]
+    PickupAnim pickupAnim;
+
     SpriteRenderer m_SpriteRenderer;
 
     float waitingTime = 0.2f;
@@ -23,6 +26,7 @@ public class Collectables : MonoBehaviour {
             Debug.LogError("Collectables: No SpriteRenderer Found");
         }
     }
+
     void Start()
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,6 +39,7 @@ public class Collectables : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag == "Player") {
+            pickupAnim.PlayAnim();
             Logger.LOG(gameObject.name + ": Collected. radius gained: " + radiusAdded, SHOW_LOG);
             GameObject player = coll.gameObject;
             player.GetComponent<SpaceController>().applyPickups(radiusAdded);
