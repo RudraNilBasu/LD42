@@ -24,15 +24,14 @@ public class KeepInstance : MonoBehaviour {
 	}
 	}
 	*/
-	private static bool created = false;
+	// private static bool created = false;
 
 	void Awake()
-	{
-		if (!created)
-		{
-			DontDestroyOnLoad(this.gameObject);
-			created = true;
-		}
-	}
-
+    {
+        DontDestroyOnLoad(this.gameObject);
+        if (FindObjectsOfType<KeepInstance>().Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
