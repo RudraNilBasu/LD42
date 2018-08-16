@@ -15,5 +15,8 @@ public class MainMenuKey : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Escape)) {
             Application.Quit();
         }
+		if (Input.GetKey(KeyCode.Return)) {
+            SceneManager.LoadScene("SampleScene");
+        }
 	}
 }

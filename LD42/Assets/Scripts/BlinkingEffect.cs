@@ -7,7 +7,7 @@ public class BlinkingEffect : MonoBehaviour {
 
     Text m_text;
 
-    string c_text = "Press Any Key to Start";
+    string c_text = "Press Enter to Start";
 	// Use this for initialization
 	void Start () {
         m_text = GetComponent<Text>();
